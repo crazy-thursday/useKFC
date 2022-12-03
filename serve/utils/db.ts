@@ -1,7 +1,10 @@
 /**
  * @description make db as fileSystem
  */
-import { existsSync } from 'https://deno.land/std@0.167.0/node/fs.ts'
+import {
+  existsSync,
+  readdirSync
+} from 'https://deno.land/std@0.167.0/node/fs.ts'
 import { DATADIR, DATADEFAULT } from '../constants/store.ts'
 import { path } from './index.ts'
 
@@ -30,16 +33,12 @@ export type Item = {
  * @returns {Map<string, Item>}
  */
 export function getList(): Map<string, Item> {
-  const fileList = Deno.readDirSync(DATADIR)
+  const fileList = readdirSync(DATADIR)
   const list: Map<string, Item> = new Map([])
-  for (const file of fileList) {
-    const { name, isFile } = file
-
-    if (isFile) {
-      const subFileList = getListByName(name)
-      subFileList.forEach((value, key) => list.set(key, value))
-    }
-  }
+  fileList.forEach((name) => {
+    const subFileList = getListByName(name)
+    subFileList.forEach((value, key) => list.set(key, value))
+  })
   return list
 }
 
