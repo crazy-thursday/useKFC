@@ -1,0 +1,37 @@
+{
+  "name": "@crazy-thursday/root",
+  "version": "1.0.0",
+  "description": "generate crazy thursday info hooks!",
+  "scripts": {
+    "dev:docs": "pnpm -F @crazy-thursday/website run dev",
+    "build:docs": "pnpm -F @crazy-thursday/website run build",
+    "build:docs:deno": "cross-env deno=true pnpm -F @crazy-thursday/website run build",
+    "dev:core": "pnpm -F @crazy-thursday/use-kfc run dev",
+    "build:core": "pnpm -F @crazy-thursday/use-kfc run build",
+    "dev:serve": "pnpm -F @crazy-thursday/use-kfc-serve run dev",
+    "build:serve": "pnpm -F @crazy-thursday/use-kfc-serve run build"
+  },
+  "keywords": [
+    "react",
+    "vue",
+    "crazy-thursday",
+    "kfc",
+    "hooks",
+    "cpa"
+  ],
+  "author": "innocces<jiangjiangjiangxi@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
+  "repository": {
+    "url": "https://github.com/crazy-thursday/useKFC.git",
+    "type": "git"
+  },
+  "packageManager": "pnpm@7.17.0",
+  "devDependencies": {
+    "@changesets/cli": "^2.25.2",
+    "cross-env": "^7.0.3"
+  }
+}

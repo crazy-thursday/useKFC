@@ -1,0 +1,29 @@
+{
+  "name": "@crazy-thursday/use-kfc-serve",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "generate crazy thursday info!",
+  "scripts": {
+    "dev": "deno task dev",
+    "build": "deno task build"
+  },
+  "keywords": [
+    "react",
+    "vue",
+    "crazy-thursday",
+    "kfc",
+    "hooks",
+    "cpa"
+  ],
+  "author": "innocces<jiangjiangjiangxi@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
+  "repository": {
+    "url": "https://github.com/crazy-thursday/useKFC.git",
+    "type": "git"
+  },
+  "packageManager": "pnpm@7.17.0"
+}
