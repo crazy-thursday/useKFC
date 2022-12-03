@@ -79,7 +79,7 @@ const store: Middleware = async (ctx) => {
       }
       const payload: ICreateCommitOption = {
         path: fileName,
-        content: base64.formString(JSON.stringify(combineFileContent))
+        content: base64.fromString(JSON.stringify(combineFileContent))
       }
       // checkFile
       const { status, sha } = await getContent(token, payload)
