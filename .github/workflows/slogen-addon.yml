@@ -6,10 +6,10 @@ on:
 
 jobs:
   addon:
+    if: github.event.label.name == 'slogen' && github.event.issue.body != ''
     runs-on: ubuntu-latest
     steps:
       - name: call kfc serve
-      - if: github.event.label.name == 'slogen' && github.event.issue.body != ''
         uses: wei/curl@v1
         with:
           args: |
