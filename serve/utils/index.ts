@@ -45,7 +45,7 @@ export function generateResponse<T>(ctx: unknown, body: T): ResponseStruct<T> {
 
 export function generateFileName(): string {
   const date = new Date()
-  return [date.getFullYear(), date.getMonth(), date.getDay(), Date.now()]
+  return [date.getFullYear(), date.getMonth(), date.getDay()]
     .join('-')
     .concat('.json')
 }
