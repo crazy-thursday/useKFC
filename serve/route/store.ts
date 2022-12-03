@@ -10,7 +10,7 @@ import {
   path
 } from '../utils/index.ts'
 import { DATADIR } from '../constants/store.ts'
-import { read } from '../utils/db.ts'
+import { read, existsSync } from '../utils/db.ts'
 import {
   checkAuth,
   getContent,
@@ -67,7 +67,11 @@ const store: Middleware = async (ctx) => {
         fileName,
         id: itemId
       }
-      const fileContent = await read(path.resolve(DATADIR, fileName))
+      const resolveFileName = path.resolve(DATADIR, fileName)
+      let fileContent = JSON.stringify({})
+      if (await existsSync(resolveFileName)) {
+        fileContent = await read(path.resolve(DATADIR, fileName))
+      }
       const combineFileContent = {
         ...JSON.parse(fileContent),
         [itemId]: item
