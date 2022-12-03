@@ -4,6 +4,7 @@ export default async (url: string, init: RequestInit) => {
   if (responese.status >= 300) {
     console.error(responeseService.message)
   }
+  responeseService.status = responese.status
   return responeseService
 }
 
