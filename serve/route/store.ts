@@ -10,7 +10,7 @@ import {
   path
 } from '../utils/index.ts'
 import { DATADIR } from '../constants/store.ts'
-import { setItem, read } from '../utils/db.ts'
+import { read } from '../utils/db.ts'
 import {
   checkAuth,
   getContent,
@@ -63,15 +63,18 @@ const store: Middleware = async (ctx) => {
         id: itemId,
         createUser: creator
       }
-      setItem(fileName, itemId, item)
       responseBody = {
         fileName,
         id: itemId
       }
-      const fileContent = read(path.resolve(DATADIR, fileName))
+      const fileContent = await read(path.resolve(DATADIR, fileName))
+      const combineFileContent = {
+        ...JSON.parse(fileContent),
+        [itemId]: item
+      }
       const payload: ICreateCommitOption = {
         path: fileName,
-        content: btoa(fileContent)
+        content: btoa(JSON.stringify(combineFileContent))
       }
       // checkFile
       const { status, sha } = await getContent(token, payload)

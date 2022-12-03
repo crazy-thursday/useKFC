@@ -1,15 +1,10 @@
 /**
  * @description make db as fileSystem
  */
-import {
-  existsSync,
-  readdirSync
-} from 'https://deno.land/std@0.167.0/node/fs.ts'
 import { DATADIR, DATADEFAULT } from '../constants/store.ts'
 import { path } from './index.ts'
 
-export const read = Deno.readTextFileSync
-export const write = Deno.writeTextFileSync
+export const read = Deno.readTextFile
 
 const defaultFileURI = path.resolve(DATADIR, DATADEFAULT)
 
@@ -32,13 +27,15 @@ export type Item = {
  * @description get all list info
  * @returns {Map<string, Item>}
  */
-export function getList(): Map<string, Item> {
-  const fileList = readdirSync(DATADIR)
+export async function getList(): Promise<Map<string, Item>> {
   const list: Map<string, Item> = new Map([])
-  fileList.forEach((name) => {
-    const subFileList = getListByName(name)
-    subFileList.forEach((value, key) => list.set(key, value))
-  })
+  for await (const file of Deno.readDir(DATADIR)) {
+    const { name, isFile } = file
+    if (isFile) {
+      const fileMap = await getListByName(name)
+      fileMap.forEach((value, key) => list.set(key, value))
+    }
+  }
   return list
 }
 
@@ -47,13 +44,13 @@ export function getList(): Map<string, Item> {
  * @param {string} name filename
  * @returns {Map<string, Item>}
  */
-export function getListByName(
+export async function getListByName(
   name: string = defaultFileURI
-): Map<string, Item> {
+): Promise<Map<string, Item>> {
   const list: Map<string, Item> = new Map([])
   try {
     const fileName = path.resolve(DATADIR, name)
-    const mapContent = read(fileName)
+    const mapContent = await read(fileName)
     if (mapContent?.length) {
       Object.entries(JSON.parse(mapContent)).forEach(([key, value]) =>
         list.set(key, value as Item)
@@ -66,32 +63,27 @@ export function getListByName(
 }
 
 /**
- * @description set key value by filename
- * @param {string} name filename
- * @param {string} key
- * @param {Item} value
- */
-export function setItem(name: string, key: string, value: Item) {
-  const fileName = path.resolve(DATADIR, name)
-  let list: Map<string, Item> = new Map([])
-  if (existsSync(fileName)) {
-    list = getListByName(name)
-  }
-  list.set(key, value)
-  const content: Record<string, Item> = {}
-  list.forEach((value, key) => (content[key] = value))
-  write(fileName, JSON.stringify(content, null, 2))
-}
-
-/**
  * @description get value by filename & key
  * @param {string} name filename
  * @param {string} key
  * @returns {Item | undefined}
  */
-export function getItem(name: string, key: string): Item | undefined {
+export async function getItem(
+  name: string,
+  key: string
+): Promise<Item | undefined> {
   const fileName = path.resolve(DATADIR, name)
-  if (existsSync(fileName)) {
-    return getListByName(name).get(key)
+  if (await existsSync(fileName)) {
+    return (await getListByName(name)).get(key)
   }
+}
+
+export async function existsSync(fileName: string): Promise<boolean> {
+  let exists = true
+  try {
+    exists = (await Deno.stat(fileName)).isFile
+  } catch (e) {
+    exists = false
+  }
+  return exists
 }
