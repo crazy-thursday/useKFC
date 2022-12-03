@@ -1,0 +1,16 @@
+name: slogen-addon
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  addon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: call kfc serve
+      - if: github.event.label.name == 'slogen' && github.event.issue.body != ''
+        uses: wei/curl@v1
+        with:
+          args: |
+            -v -H 'Content-Type: application/json' -X POST https://use-kfc-serve.deno.dev/store -d '{"token": "${{ secrets.GITHUB_TOKEN }}", "id": "${{ github.event.issue.number }}", "content": "${{ github.event.issue.body }}", "createUser": "${{ github.event.issue.user.login }}"}'
