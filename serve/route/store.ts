@@ -2,7 +2,7 @@
  * @description manal add or search kfc message
  */
 import { type Middleware } from 'https://deno.land/x/oak/middleware.ts'
-import { toBase64 } from 'npm:fast-base64@^0.1.7'
+import base64 from 'https://deno.land/x/b64@1.1.24/src/base64.js'
 
 import {
   generateResponse,
@@ -79,7 +79,7 @@ const store: Middleware = async (ctx) => {
       }
       const payload: ICreateCommitOption = {
         path: fileName,
-        content: await toBase64(JSON.stringify(combineFileContent))
+        content: base64.formString(JSON.stringify(combineFileContent))
       }
       // checkFile
       const { status, sha } = await getContent(token, payload)
