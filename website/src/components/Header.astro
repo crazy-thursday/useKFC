@@ -1,5 +1,7 @@
 ---
 import Svg from '@components/Svg.astro'
+import ThemeToggle from '@components/Theme'
+
 const menuLinks = {
   github: {
     link: 'https://github.com/crazy-thursday/useKFC',
@@ -36,6 +38,9 @@ const menuLinks = {
           </li>
         ))
       }
+      <li class="ml-2 h-6 flex items-center">
+        <ThemeToggle client:idle />
+      </li>
     </ul>
   </nav>
 </header>
