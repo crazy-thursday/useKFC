@@ -37,6 +37,36 @@ import useKFC from '@crazy-thursday/use-kfc'
 $ curl 'https://use-kfc-serve.deno.dev/kfc'
 ```
 
+- data struct 📚
+
+```ts
+export enum CODE {
+  /**
+   * @description success code
+   */
+  SUCCESS = 10086,
+  /**
+   * @description failed code
+   */
+  FAILED = 10087,
+  /**
+   * @description deny code
+   */
+  DENY = 10089
+}
+
+type DataStruct = {
+  code: CODE
+  ip: string
+  method: 'GET'
+  data: {
+    content: string
+    id: string
+    createUser: string
+  }
+}
+```
+
 ## Slogen
 
 The repository has some slogen built in. You can also use issues to contribute to slogen. But please make sure that the issue contains complete and non-controversial text or emoticons. Add the slogen tag after you finish editing the content. Github CI will automatically collect your contributions to the repository.

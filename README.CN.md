@@ -37,6 +37,36 @@ import useKFC from '@crazy-thursday/use-kfc'
 $ curl 'https://use-kfc-serve.deno.dev/kfc'
 ```
 
+- data struct 📚
+
+```ts
+export enum CODE {
+  /**
+   * @description success code
+   */
+  SUCCESS = 10086,
+  /**
+   * @description failed code
+   */
+  FAILED = 10087,
+  /**
+   * @description deny code
+   */
+  DENY = 10089
+}
+
+type DataStruct = {
+  code: CODE
+  ip: string
+  method: 'GET'
+  data: {
+    content: string
+    id: string
+    createUser: string
+  }
+}
+```
+
 ## Slogen
 
 仓库内置了部分 slogen. 此外你也可以使用 issue 来进行 slogen 贡献. 但请确保 issue 包含完整且不带有争议的文字或表情. 在完成内容编辑之后增加 slogen 的标签. Github CI 会自动收集你贡献的内容到仓库内.
