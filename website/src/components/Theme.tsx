@@ -30,6 +30,7 @@ const ThemeToggle: FC = () => {
   const handleToggleTheme = useCallback(() => {
     const nextTheme = theme === 'light' ? 'dark' : 'light'
     localStorage.setItem('theme', nextTheme)
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: nextTheme }))
     setTheme(nextTheme)
   }, [theme])
 

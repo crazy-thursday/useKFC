@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import People from '@components/People.astro'
+import KFC from '@components/KFC'
 ---
 
 <BaseLayout>
   <main class="w-full relative grow">
     <People />
+    <KFC client:only="react" />
   </main>
 </BaseLayout>
