@@ -4,8 +4,8 @@
   "description": "generate crazy thursday info hooks!",
   "scripts": {
     "dev:docs": "pnpm -F @crazy-thursday/website run dev",
-    "build:docs": "pnpm -F @crazy-thursday/website run build",
-    "build:docs:deno": "cross-env deno=true pnpm -F @crazy-thursday/website run build",
+    "build:docs": "pnpm run build:core && pnpm -F @crazy-thursday/website run build",
+    "build:docs:deno": "pnpm run build:core && cross-env deno=true pnpm -F @crazy-thursday/website run build",
     "dev:core": "pnpm run sync:slogen && pnpm -F @crazy-thursday/use-kfc run dev",
     "build:core": "pnpm -F @crazy-thursday/use-kfc run build",
     "dev:serve": "pnpm -F @crazy-thursday/use-kfc-serve run dev",
