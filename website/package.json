@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "serve:render": "node ./dist/server/entry.mjs",
     "astro": "astro"
   },
   "dependencies": {

@@ -129,13 +129,15 @@
 
 <style>
   @tailwind base;
-  #people.normal {
-    height: calc(100vh - theme('spacing.20'));
+  #people {
+    height: calc(100vh - 136px);
   }
 
-  #people.mobile {
-    height: calc(100vh - 136px);
+  @media (min-width: 768px) {
+    #people {
+      height: calc(100vh - theme('spacing.20'));
+    }
   }
 </style>
 
-<canvas id="people" class="absolute w-full -z-10 mobile md:normal"></canvas>
+<canvas id="people" class="absolute w-full -z-10"></canvas>
