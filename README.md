@@ -27,8 +27,50 @@
 
 - hooks 🌩
 
-```jsx
-import useKFC from '@crazy-thursday/use-kfc'
+```tsx
+import useKFC, { useParseSlogen } from '@crazy-thursday/use-kfc'
+// if u not have exists slogenList, use package json
+import slogenLike from '@crazy-thursday/use-kfc/slogen'
+
+/**
+ * @description slogen item struct
+ */
+export type SlogenItem = {
+  /**
+   * @description slogen content message
+   */
+  content: string
+  /**
+   * @description slogen id to avoid repeat
+   */
+  id: string | number
+}
+
+export type Options<T> = {
+  /**
+   * @description is provide, slogen will random from this array
+   */
+  slogenList: SlogenItem[]
+  /**
+   * @description manual refresh slogen
+   */
+  refreshSignal?: T
+  /**
+   * @description whether skip thursday check
+   */
+  skipDayCheck?: boolean
+}
+
+function App() {
+  const slogenList = useParseSlogen(slogenLike)
+  const { slogen } = useKFC({
+    slogenList
+  })
+
+  return {
+    <pre>{slogen}</pre>
+  }
+}
 ```
 
 - api 💻
