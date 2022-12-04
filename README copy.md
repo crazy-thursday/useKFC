@@ -5,8 +5,8 @@
   <br />
   <h3 align="center">
   <span>
-    <a>English</a> | 
-    <a href="./README.CN.md">Chinese</a>
+    <a href="./README.md">英文</a> | 
+    <a>中文</a>
   </span>
   <h3>
 </p>
@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <h1>useKFC</h1>
-  <p>make kfc slogen for crazy thursday!!!<p>
+  <p>生成疯狂星期四的文字!!!<p>
 </div>
 
 ## Usage
@@ -39,11 +39,11 @@ $ curl 'https://use-kfc-serve.deno.dev/kfc'
 
 ## Slogen
 
-The repository has some slogen built in. You can also use issues to contribute to slogen. But please make sure that the issue contains complete and non-controversial text or emoticons. Add the slogen tag after you finish editing the content. Github CI will automatically collect your contributions to the repository.
+仓库内置了部分 slogen. 此外你也可以使用 issue 来进行 slogen 贡献. 但请确保 issue 包含完整且不带有争议的文字或表情. 在完成内容编辑之后增加 slogen 的标签. Github CI 会自动收集你贡献的内容到仓库内.
 
 ## Contribution
 
-See [Contributing Guide](CONTRIBUTING.md).
+查看 [贡献指南](CONTRIBUTING.md).
 
 ## License
 
