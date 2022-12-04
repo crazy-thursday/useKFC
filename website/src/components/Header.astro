@@ -1,0 +1,42 @@
+---
+import Svg from '@components/Svg.astro'
+const menuLinks = {
+  github: {
+    link: 'https://github.com/crazy-thursday/useKFC',
+    src: 'https://api.iconify.design/logos:github-icon.svg'
+  },
+  discord: {
+    link: 'https://discord.gg/b2SCucyKyn',
+    src: 'https://api.iconify.design/logos:discord-icon.svg'
+  }
+}
+---
+
+<header
+  class="h-20 w-full fixed bg-white/70 dark:bg-[#242424]/70 backdrop-blur backdrop-saturate-50"
+>
+  <nav class="container m-auto h-full flex items-center justify-between">
+    <a href="/" class="flex items-center">
+      <img
+        width="24"
+        src="https://api.iconify.design/noto-v1:french-fries.svg"
+      />
+      <span
+        class="ml-2 text-base text-[#242424]/90 dark:text-white/90 font-semibold"
+        >KFC</span
+      >
+    </a>
+    <ul class="flex items-center justify-center">
+      {
+        Object.entries(menuLinks).map(([type, { link, src }]) => (
+          <li class="ml-2">
+            <a href={link} target="_blank" role="button">
+              <Svg src={src} width="20" height="20" alt={type} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+<style></style>

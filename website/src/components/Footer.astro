@@ -1,0 +1,20 @@
+---
+import { POWERLIST } from 'src/config'
+import Power from '@components/Power.astro'
+const today = new Date()
+---
+
+<footer
+  class="w-full h-max md:h-20 py-4 text-slate-900 dark:text-white flex flex-col md:flex-row items-center justify-center"
+>
+  &copy; {today.getFullYear()} crazy thursday. All rights reserved.
+  <ul class="flex items-center justify-center flex-col md:flex-row">
+    {
+      POWERLIST.map((item) => (
+        <li class="mt-2 md:mt-0">
+          <Power {...item} />
+        </li>
+      ))
+    }
+  </ul>
+</footer>

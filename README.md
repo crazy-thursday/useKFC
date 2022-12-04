@@ -85,7 +85,7 @@ See [Contributing Guide](CONTRIBUTING.md).
   <tr align="center">
     <td>
       <a href="https://www.buymeacoffee.com/innocces" target="_blank">
-        <img width="150" src="https://api.iconify.design/vscode-icons:file-type-coffeescript.svg">
+        <img width="120" src="https://api.iconify.design/simple-icons:buymeacoffee.svg">
       </a>
     </td>
     <td>

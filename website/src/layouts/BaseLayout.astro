@@ -1,0 +1,18 @@
+---
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="w-full min-h-screen bg-white dark:bg-[#242424] flex flex-col">
+    <Header title={SITE_TITLE} />
+    <slot />
+    <Footer />
+  </body>
+</html>

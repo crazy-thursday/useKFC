@@ -1,0 +1,22 @@
+---
+import type { PowerItem } from 'src/config'
+export type Props = PowerItem
+
+const { name, icon, link, type } = Astro.props
+
+const { pathname } = Astro.url
+const isActive = pathname.includes(type)
+const imageURI = new URL(icon, Astro.url + 'power/')
+---
+
+<a
+  class:list={[
+    'ml-4 p-1 bg-violet-50 rounded-lg transition-colors text-slate-900 flex items-center  justify-center hover:bg-violet-300 hover:text-white',
+    { 'bg-violet-300 text-white': isActive }
+  ]}
+  href={link}
+  target="_blank"
+>
+  <img class="w-6 h-6 block" src={imageURI.toString()} alt={name} />
+  <span class="block ml-1">power by {name}</span>
+</a>
