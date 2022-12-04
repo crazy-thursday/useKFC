@@ -11,10 +11,10 @@
   <a href="https://discord.gg/b2SCucyKyn"><img src="https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord" alt="discord chat"></a>
 </p>
 <br />
-<p align="center">
+<div align="center">
   <h1>useKFC</h1>
   <p>make kfc slogen for crazy thursday!!!<p>
-</p>
+</div>
 
 ## Contribution
 
