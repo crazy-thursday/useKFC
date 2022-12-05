@@ -44,11 +44,11 @@ const KFC: FC = () => {
   }, [slogen])
 
   const handleCopy = useCallback(() => {
-    onClose()
     toast({
       status: 'success',
       title: '复制成功! ',
-      duration: 500
+      duration: 500,
+      position: 'top'
     })
   }, [])
 
@@ -72,7 +72,7 @@ const KFC: FC = () => {
             }}
           >
             <AlertDialogOverlay />
-            <AlertDialogContent>
+            <AlertDialogContent h={300}>
               <AlertDialogBody pt={4} maxH={60} overflow="auto">
                 <pre className="whitespace-pre-wrap break-words text-[#242424]/90 dark:text-white/90">
                   {slogen}
@@ -87,6 +87,13 @@ const KFC: FC = () => {
                     复制
                   </Button>
                 </Copy>
+                <Button
+                  colorScheme="purple"
+                  ml={3}
+                  onClick={() => setRefreshSignal(Date.now())}
+                >
+                  换一个
+                </Button>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
