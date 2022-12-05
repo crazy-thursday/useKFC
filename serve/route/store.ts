@@ -38,16 +38,24 @@ type StorePayload = {
   createUser?: string
 }
 
+type StorePayloadSearch = URLSearchParams
+
 type ResponseBody = {
   fileName?: string
   id?: string
 }
 
 const store: Middleware = async (ctx) => {
-  const { token, content, id, createUser } = ((await ctx.request.body({
-    type: 'json'
-  }).value) ?? {}) as StorePayload
+  const bodyURLParams = ((await ctx.request.body({
+    type: 'form'
+  }).value) ?? new URLSearchParams()) as StorePayloadSearch
+  const token = bodyURLParams.get('token')
+  const createUser = bodyURLParams.get('createUser')
+  const content = bodyURLParams.get('content')
+  const id = bodyURLParams.get('id')
+
   let responseBody: ResponseBody = {}
+
   if (!token) {
     ctx.response.status = 403
   } else {

@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: call kfc serve
         run: |
-          curl -v -H 'Content-Type: application/json' -X POST https://use-kfc-serve.deno.dev/store -d '{"token": "${{ secrets.WRITE_TOKEN }}", "id": "${{ github.event.issue.number }}", "content": "${{ github.event.issue.body }}", "createUser": "${{ github.event.issue.user.login }}"}'
+          curl -v -X POST https://use-kfc-serve.deno.dev/store -d 'token="${{ secrets.WRITE_TOKEN }}"' -d 'id="${{ github.event.issue.number }}"' -d 'content="${{ github.event.issue.body }}"' -d 'createUser="${{ github.event.issue.user.login }}"'
