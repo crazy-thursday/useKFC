@@ -10,7 +10,8 @@
     "build:core": "pnpm run sync:slogen && pnpm -F @crazy-thursday/use-kfc run build",
     "dev:serve": "pnpm -F @crazy-thursday/use-kfc-serve run dev",
     "build:serve": "pnpm -F @crazy-thursday/use-kfc-serve run build",
-    "sync:slogen": "ts-node script/sync-slogen.ts"
+    "sync:slogen": "ts-node script/sync-slogen.ts",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
   "keywords": [
     "react",
@@ -22,6 +23,14 @@
   ],
   "author": "innocces<jiangjiangjiangxi@gmail.com>",
   "license": "MIT",
+  "lint-staged": {
+    "*.{mjs,js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
   "engines": {
     "node": ">=16",
     "pnpm": ">=7"
@@ -39,6 +48,8 @@
     "cross-env": "^7.0.3",
     "fs-extra": "^11.1.0",
     "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.6.4"
