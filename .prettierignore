@@ -1,0 +1,8 @@
+**/*.svg
+**/*.ejs
+**/*.html
+website/**/*.mdx
+website/**/*.astro
+package.json
+
+**/dist
