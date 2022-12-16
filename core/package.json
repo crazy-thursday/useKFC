@@ -1,6 +1,6 @@
 {
   "name": "@crazy-thursday/use-kfc",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "generate crazy thursday info hooks!",
   "type": "module",
   "main": "./dist/use-kfc.umd.js",
