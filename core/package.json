@@ -1,6 +1,6 @@
 {
   "name": "@crazy-thursday/use-kfc",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "generate crazy thursday info hooks!",
   "type": "module",
   "main": "./dist/use-kfc.umd.js",
@@ -13,6 +13,9 @@
     },
     "./slogen": "./dist/slogen.json"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && cp src/slogen.json dist/slogen.json",
